@@ -143,14 +143,14 @@ MongoDB also offers the following operators
 **$lte** = less than or equal to
 **$ne** = not equal to
 
-Here's an example for all the accounts with a acount_balance greater than 9000000
+Here's an example for all the accounts with a acount_balance greater than 9000000 any currency :D
 ```js
 db.bank_data.find({ 'accounts.account_balance': {$gt: 9000000} })
 ```
-Or let's say we want to see who has more than $9000000
+Ok 9000000 'money unit' doesn't really mean anything. If the account has 9 Millis YEN, it's peanuts ;) Let's say we want to see who has more than $9000000
 
 ```js
-db.bank_data.find({ 'accounts.account_balance': {$gt: 9000000}, 'account.currency': 'USD' })
+db.bank_data.find({ 'accounts.account_balance': {$gt: 9000000}, 'accounts.currency': 'USD' })
 ```
 
 ### Sorting
@@ -165,4 +165,6 @@ db.bank_data.find({first_name: "JIMMY"}, {first_name: 1, last_name: 1}).sort({la
 The 1 after last_name means by ascending order. For a descending order use -1
 ```js
 {last_name: 1 }
-```	
+```
+
+
