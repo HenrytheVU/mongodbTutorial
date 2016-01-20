@@ -30,6 +30,7 @@ Windows:
 - Double click on mongod.exe or run at CMD
 
 MacOS:
+Make sure the data/db directory exists, depends on where you run the mongod prozess
 - Terminal:
 ```bash
 mongod --dbpath data/db
@@ -101,7 +102,7 @@ You can pass specified paramter to the query:
 
 To find all accounts with last name "SMITH" -> just pass the json object to the query:
 
-```json
+```js
 {last_name : "SMITH"}
 ```
 
@@ -109,3 +110,59 @@ To find all accounts with last name "SMITH" -> just pass the json object to the 
 db.bank_data.find({last_name : "SMITH"})
 ```
 
+#### AND Queries
+
+We can achieve an AND query by simply specifying another parameter:
+	
+```js
+db.bank_data.find({last_name: "SMITH", first_name: "JAMES"})
+```
+
+#### OR Queries
+
+OR queries are different because they require the **$or** operator
+
+
+Say that we wanted to get any person whose last name is SMITH or MARTINEZ:
+
+```js
+db.bank_data.find({$or: [ { last_name: "MARTINEZ"}, {last_name: "SMITH"} ]})
+```
+
+Only show the first_name and last_name for a cleaner output:
+```js
+db.bank_data.find({$or: [ { last_name: "MARTINEZ"}, {last_name: "SMITH"} ]}, {first_name: 1, last_name: 1})
+```
+
+### Greater Than, Less Than, Not Equal To Operators
+
+MongoDB also offers the following operators
+**$gt** = greater than
+**$lt** = less than
+**$gte** = greater than or equal to
+**$lte** = less than or equal to
+**$ne** = not equal to
+
+Here's an example for all the accounts with a acount_balance greater than 9000000
+```js
+db.bank_data.find({ 'accounts.account_balance': {$gt: 9000000} })
+```
+Or let's say we want to see who has more than $9000000
+
+```js
+db.bank_data.find({ 'accounts.account_balance': {$gt: 9000000}, 'account.currency': 'USD' })
+```
+
+### Sorting
+
+We can sort the output by using the **sort()** function
+
+Say we want to sort all the JIMMY's by last_name:
+
+```js
+db.bank_data.find({first_name: "JIMMY"}, {first_name: 1, last_name: 1}).sort({last_name: 1 })
+```
+The 1 after last_name means by ascending order. For a descending order use -1
+```js
+{last_name: 1 }
+```	
