@@ -15,6 +15,7 @@ Easiest way:
 - Or put this in the Terminal prompt: 
 ```bash
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
 - After installing Homebrew just type this in the Terminal prompt: brew install mongodb
 
 Otherwise:
