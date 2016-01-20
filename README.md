@@ -12,7 +12,9 @@ On MacOS
 Easiest way:
 - Get Homebrew - a kickass package manager for OS X
 - Go to www.brew.sh and check out the installation guide (very easy and quick)
-- Or put this in the Terminal prompt: ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+- Or put this in the Terminal prompt: 
+```bash
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 - After installing Homebrew just type this in the Terminal prompt: brew install mongodb
 
 Otherwise:
